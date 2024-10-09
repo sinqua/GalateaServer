@@ -31,6 +31,8 @@ TTS: Azure
 
 3. ChatGPT 답변을 음성으로 소리내는 VRM 아바타가 포함된 Unity 화면
 
+4. 백엔드 서비스를 운영할 클라우드 서버 개발
+
 ## 참고자료
 
 https://github.com/sinqua/Techno-symbiosis
