@@ -60,3 +60,7 @@ VRM 아바타 립싱크 샘플
 https://python.langchain.com/v0.2/docs/how_to/message_history/
 
 이전의 대화를 기억하는 LLM을 만들기 위한 Langchain 가이드
+
+Supabase 비밀번호
+
+2lyAcfwcbB2dPQUg
