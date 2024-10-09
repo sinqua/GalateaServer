@@ -23,6 +23,14 @@ TTS: Azure
 
 라이브스트리밍: Chzzk
 
+## 마일스톤
+
+1. Unity에서 Python 서버로 메시지 전송 -> Python 서버에서 Unity로 ChatGPT 답변을 전달
+
+2. 치지직 채팅을 ChatGPT로 전달하는 Python 서버
+
+3. ChatGPT 답변을 음성으로 소리내는 VRM 아바타가 포함된 Unity 화면
+
 ## 참고자료
 
 https://github.com/sinqua/Techno-symbiosis
