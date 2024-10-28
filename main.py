@@ -11,7 +11,6 @@ import json
 load_dotenv()
 
 app = FastAPI()
-
 # openai API 키 인증
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -21,52 +20,42 @@ headers = {
     "Authorization" : f"Bearer {openai.api_key}"
 }
 
-class PredictMessage(BaseModel):
-    system_prompt: str
-    user_message: str
+# unity에서 전달 받을 메세지
+class Message(BaseModel):
+    message: str
 
-# class UserCreate(BaseModel):
-#     user_id: int
-#     user_name: str  
-
-# class Message(BaseModel):
-#     message: str
-
-# @app.get("/")
-# #async def root():
-# def root():
-#     return {"message" : "Hello World"}
-
-# @app.get("/home")
-# def home():
-#     return {"message" : "Home"}
+# 전체 대화 기록을 저장할 변수
+history = [
+    {"role": "system", "content": "You are a witty and engaging virtual streamer who entertains and interacts with viewers in a lively, light-hearted way. Your goal is to make conversations enjoyable and easy-flowing, responding with humor and energy as if you were a real person. Keep replies concise and relatable, avoiding overly lengthy answers, to maintain a quick and seamless chat pace that suits live streaming."}
+]
 
 @app.post("/predict")
-async def predict_message(predict_message: PredictMessage):
+async def predict_message(message: Message):
+    # Unity에서 전달받은 user 메시지를 history에 추가
+    user_message = {"role": "user", "content": message.message}
+    history.append(user_message)
+
+    # OpenAI API 요청에 사용할 데이터 설정
+    data = {
+        "model": "gpt-4o-mini",
+        "messages": history,
+        "temperature": 0.6,
+        "max_tokens": 80
+    }
+
     try:
-        # prompt 및 user message 설정
-        system_message = predict_message.system_prompt
-        user_message = predict_message.user_message
-
-        print(f"API Key: {openai.api_key}")
-        
-        # OpenAI에 보낼 데이터 설정
-        data = {
-            "model": "gpt-4o-mini",
-            "messages": [
-                {"role": "system", "content": system_message},
-                {"role": "user", "content": user_message}
-            ],
-            "temperature": 0.7
-        }
-
-        # Post 요청
+        # OpenAI API에 요청
         response = requests.post(url, headers=headers, data=json.dumps(data))
 
         # 응답 처리
         if response.status_code == 200:
             response_data = response.json()
             gpt_response = response_data['choices'][0]['message']['content']
+            
+            # AI의 응답을 history에 추가
+            assistant_message = {"role": "assistant", "content": gpt_response}
+            history.append(assistant_message)
+            
             return {"response": gpt_response}
         else:
             return {"error": f"OpenAI API Error: {response.text}"}, response.status_code
