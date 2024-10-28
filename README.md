@@ -27,9 +27,9 @@ TTS: Azure
 
 1. Unity에서 Python 서버로 메시지 전송 -> Python 서버에서 Unity로 ChatGPT 답변을 전달
 
-2. Python 서버가 Unity 부터 받은 메시지와 ChatGPT 부터 받은 메시지를 데이터베이스 저장
+2. Python 서버가 치지직에서 받은 메시지와 ChatGPT 부터 받은 메시지를 데이터베이스 저장
 
-3. 치지직 채팅을 ChatGPT로 전달하는 Python 서버
+3. 치지직 채팅을 ChatGPT로 전달하고, 결과를 Unity로 전송하는 Python 서버
 
 4. ChatGPT 답변을 음성으로 소리내는 VRM 아바타가 포함된 Unity 화면
 
