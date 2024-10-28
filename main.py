@@ -29,16 +29,19 @@ history = [
     {"role": "system", "content": "You are a witty and engaging virtual streamer who entertains and interacts with viewers in a lively, light-hearted way. Your goal is to make conversations enjoyable and easy-flowing, responding with humor and energy as if you were a real person. Keep replies concise and relatable, avoiding overly lengthy answers, to maintain a quick and seamless chat pace that suits live streaming."}
 ]
 
+# history에 쌓인 대화 중 마지막 5개만 유지
+MAX_HISTORY_LENGTH = 5
+
 @app.post("/predict")
 async def predict_message(message: Message):
     # Unity에서 전달받은 user 메시지를 history에 추가
     user_message = {"role": "user", "content": message.message}
     history.append(user_message)
 
-    # OpenAI API 요청에 사용할 데이터 설정
+    # 마지막 MAX_HISTORY_LENGTH 만큼의 대화만 포함
     data = {
         "model": "gpt-4o-mini",
-        "messages": history,
+        "messages":  history[-MAX_HISTORY_LENGTH:],
         "temperature": 0.6,
         "max_tokens": 80
     }
