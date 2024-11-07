@@ -64,3 +64,6 @@ https://python.langchain.com/v0.2/docs/how_to/message_history/
 Supabase 비밀번호
 
 2lyAcfwcbB2dPQUg
+
+실행명령어
+```phyhon -m uvicorn main:app --reload```
