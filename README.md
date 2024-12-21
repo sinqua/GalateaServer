@@ -1,69 +1,13 @@
 # Galatea
 인공지능 컴패니언의 가능성 탐구
 
-## 개요
+## 작업목적
 
-목적: 포스트휴먼 체험, 커리어 성장, 상업가능성 탐구
+1. LLM 알고리즘을 이용하는 방식을 익히기 위해서다. LLaMA 인공지능을 어떻게 조작할 수 있는지 경험해보는 것이다. 그러나 프롬포트 엔지니어링이나 RAG 등의 기능을 활용하지는 않고 있다. 심지어, LLM의 성격을 작성하는 코드 또한 넣고 있지 않다. 호기심을 뒷받침할 자신감도 없고, 세상에 어떤 니즈가 있는지 파악할 사회성 또한 없다. 그래서 침몰한다. 
 
-목표: 채팅을 인식하고 시청자와 소통하는 버추얼 스트리머 방송 온에어 
+2. XR 라이브러리 사용 규칙을 익히기 위해서다. Unity의 XR 라이브러리를 학습했지만, 이 라이브러리는 VR 개발에 초점을 두고 개발되어서 XR 프로그램을 구현하는데 한계가 있다. 따라서, 메타의 XR 라이브러리를 이용해야 하는데, 추가적인 학습 시간이 필요하다. 이 목적은 회사에서도 추구할 수 있다는 단점이 있다. 로만시스 일정은 뒤로 밀렸고, 당장에 개발할 프로젝트는 없다. 메타 XR 라이브러리로 핸드 트래킹을 이용한 열차 조작을 만들면 회사에 도움이 된다. 따라서, 퇴근 후 추가적인 시간을 들여 훈련할 필요가 없다.  
 
-## 구현
+3. 메타 퀘스트를 구매한 비용이 아까워서다. 이 경우는 매몰 비용의 오류로, 아바타는 XR 헤드셋이 아니라 웹 어플리케이션으로도 구현되어도 괜찮다. 사용자의 필요에 따라 WebXR 프레임워크를 활용해 몰입형 환경을 제공하기만 하면 되니까 말이다. 
 
-형식: AI + Avatar + Live streaming
+결론, 갈라테아 프로젝트는 Unity로 개발하고, WebGL 프레임워크로 빌드하자. 표정, LLM 그리고 물리 표현에 집중해서 다른 사람에게 쉽게 보여주고, 신선하다는 반응을 받아서 자신감을 채우려 노력하자.  
 
-3D 렌더링: Unity
-
-TTS: Azure
-
-백엔드: fastAPI
-
-대화모델: Langchain
-
-데이터베이스: Supabase(postgresql)
-
-라이브스트리밍: Chzzk
-
-## 마일스톤
-
-1. Unity에서 Python 서버로 메시지 전송 -> Python 서버에서 Unity로 ChatGPT 답변을 전달
-
-2. 치지직 채팅을 읽고 파이썬 서버로 전달하는 Unity 컴포넌트
-
-3. Python 서버는 치지직 채팅을 ChatGPT로 전달하고, 답변을 Unity로 전송
-
-4. VRM 아바타가 포함된 Unity 화면은 ChatGPT 답변을 발성
-
-5. 백엔드 서비스를 운영할 클라우드 서버 개발
-
-## 참고자료
-
-https://github.com/sinqua/Techno-symbiosis
-
-2024년 여름에 제작해본 LLM 어플리케이션. Flask + Langchain + LLaMa3 + Supabase + React 
-
-https://github.com/gunyu1019/chzzk_py
-
-치지직 Python API (비공식)
-
-https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart
-
-Unity-AzureSDK 연결 튜토리얼
-
-https://fastapi.tiangolo.com/tutorial/first-steps/
-
-fastAPI 튜토리얼
-
-https://github.com/sotanmochi/VRMLipSyncSample
-
-VRM 아바타 립싱크 샘플
-
-https://python.langchain.com/v0.2/docs/how_to/message_history/
-
-이전의 대화를 기억하는 LLM을 만들기 위한 Langchain 가이드
-
-Supabase 비밀번호
-
-2lyAcfwcbB2dPQUg
-
-실행명령어
-```phyhon -m uvicorn main:app --reload```
